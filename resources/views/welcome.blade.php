@@ -1,15 +1,25 @@
 @extends('layouts.app')
 @section('content')
-    <div class="title m-b-md">
-        Laravel
+    <div class="jumbotron text-center">
+        <h1>Laratter</h1>
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            </ul>
+        </nav>
     </div>
-
-    <div class="links">
-        <a href="https://laravel.com/docs">Documentation</a>
-        <a href="https://laracasts.com">Laracasts</a>
-        <a href="https://laravel-news.com">News</a>
-        <a href="https://forge.laravel.com">Forge</a>
-        <a href="https://github.com/laravel/laravel">GitHub</a>
+    <div class="row">
+        @forelse($messages as $message)
+            <div class="col-6">
+                <img src="{{ $message['image'] }}" alt="Message banner" class="img-thumbnail">
+                <p class="card-text">
+                    {{ $message['content'] }}
+                    <a href="/messages/{{ $message['id'] }}">Read more</a>
+                </p>
+            </div>
+        @empty
+            <p>There is no highlighted messsages</p>
+        @endforelse
     </div>
 @endsection
 
