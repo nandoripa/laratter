@@ -35,5 +35,12 @@
             <p>There is no highlighted messsages</p>
         @endforelse
     </div>
+    @if(count($messages))
+        <div class="row">
+            <div class="mt-2 mx-auto">
+                {{ $messages->links('pagination::bootstrap-4') }}
+            </div>
+        </div>
+    @endif
 @endsection
 

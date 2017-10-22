@@ -9,6 +9,7 @@ class MessagesController extends Controller
 {
     public function show(Message $message)
     {
+        $message
 
         return view('messages.show', [
             'message' => $message,
