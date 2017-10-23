@@ -25,11 +25,8 @@
     <div class="row">
         @forelse($messages as $message)
             <div class="col-6">
-                <img src="{{ $message->image }}" alt="Message banner" class="img-thumbnail">
-                <p class="card-text">
-                    {{ $message->content }}
-                    <a href="/messages/{{ $message->id }}">Read more</a>
-                </p>
+                @include('messages.message')
+                <a href="/messages/{{ $message->id }}">Read more</a>
             </div>
         @empty
             <p>There is no highlighted messsages</p>

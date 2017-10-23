@@ -9,7 +9,6 @@ class MessagesController extends Controller
 {
     public function show(Message $message)
     {
-        $message
 
         return view('messages.show', [
             'message' => $message,
@@ -18,9 +17,12 @@ class MessagesController extends Controller
 
     public function create(CreateMessageRequest $request)
     {
+        $user = $request->user();
+
         $message = Message::create([
             'content' => $request->input('message'),
-            'image' => 'http://lorempixel.com/600/338?' . mt_rand(0, 1000)
+            'image' => 'http://lorempixel.com/600/338?' . mt_rand(0, 1000),
+            'user_id' => $user->id,
         ]);
 
         return redirect('/messages/' . $message->id);
